@@ -1,14 +1,11 @@
-import React from 'react';
+import react from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import App from './App';
 import storeConfig from './store/store';
 
-let initialState={}
-
-const store = storeConfig(initialState);
 const RNRedux = ()=> (
-	<Provider store={store}>
+	<Provider store={storeConfig}>
 		<App />
 	</Provider>
 	);
