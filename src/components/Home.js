@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, BackHandler } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,6 +15,7 @@ import { addPlace } from '../../store/actions/places';
 const store = storeConfig();
 
 class Home extends React.Component{ 
+
   constructor(props){
     super(props);
     this.onPressLearnMore = this.onPressLearnMore.bind(this);
@@ -23,7 +24,14 @@ class Home extends React.Component{
   componentDidMount(){
     // this.setState({icon:)};
     this.props.logTheAction('Palani');
+    BackHandler.addEventListener('hardwareBackPress', function() {
+    this.goBack()
+    return true
+  })
   }
+
+
+
 
   onPressLearnMore(){
     Promise.all([

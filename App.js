@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import Home from "./src/components/Home";
 import Tab1 from "./src/components/Tab1";
 import Tab2 from "./src/components/Tab2";
+import storage from "./src/components/storage";
 import storeConfig from './store/store';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -14,6 +15,7 @@ const store = storeConfig(initialState);
 Navigation.registerComponent("mock.Home",()=> Home, store, Provider); 
 Navigation.registerComponent("mock.Tab1",()=> Tab1, store, Provider); 
 Navigation.registerComponent("mock.Tab2",()=> Tab2, store, Provider); 
+Navigation.registerComponent("mock.storage",()=> storage, store, Provider); 
 
 
 // Start a App
@@ -46,7 +48,7 @@ const startApp = () => {
     },
     {
       label: 'Two',
-      screen: 'mock.Tab1',
+      screen: 'mock.storage',
       icon:icons[0],
       title: 'Screen Two'
     },
