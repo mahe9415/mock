@@ -1,13 +1,21 @@
-import react from 'react';
-import { AppRegistry } from 'react-native';
-import { Provider } from 'react-redux';
-import App from './App';
-import store from './store/store';
+// import React from 'react';
+// import { AppRegistry } from 'react-native';
+// import { Provider } from 'react-redux';
+// import App from './App';
 
-const RNRedux = ()=> (
-	<Provider store={store}>
-		<App />
-	</Provider>
-	);
+import startApp from './App';
+// console.log("ghello ")
+startApp()
+// import storeConfig from './store/store';
 
-AppRegistry.registerComponent('mock', () => RNRedux);
+// let initialState={}
+
+// const store = storeConfig(initialState);
+// const RNRedux = ()=> (
+	// <Provider store={store}>
+		// <App />
+	// </Provider>
+	// );
+
+// AppRegistry.registerComponent('mock', () => App);
+ 
