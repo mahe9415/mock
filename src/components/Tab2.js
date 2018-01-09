@@ -16,7 +16,7 @@ class Home extends React.Component{
   }
 
   componentDidMount(){
-    this.props.logTheAction('Palani');
+    // this.props.logTheAction('Palani');
   }
 
   render() {

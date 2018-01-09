@@ -3,7 +3,9 @@ import { Provider } from 'react-redux';
 import Home from "./src/components/Home";
 import Tab1 from "./src/components/Tab1";
 import Tab2 from "./src/components/Tab2";
-import storage from "./src/components/storage";
+import Login from "./src/components/Login";
+import List from "./src/components/List";
+import ListDetails from "./src/components/ListDetails";
 import storeConfig from './store/store';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,23 +17,25 @@ const store = storeConfig(initialState);
 Navigation.registerComponent("mock.Home",()=> Home, store, Provider); 
 Navigation.registerComponent("mock.Tab1",()=> Tab1, store, Provider); 
 Navigation.registerComponent("mock.Tab2",()=> Tab2, store, Provider); 
-Navigation.registerComponent("mock.storage",()=> storage, store, Provider); 
+Navigation.registerComponent("mock.List",()=> List, store, Provider); 
+Navigation.registerComponent("mock.Login",()=> Login, store, Provider); 
+Navigation.registerComponent("mock.ListDetails",()=> ListDetails, store, Provider); 
 
 
 // Start a App
 
 
-// const startApp = () =>{
-// Navigation.startSingleScreenApp({
-//   screen:{
-//   screen:"mock.Home",
-//   title:"login"
-// }
-// })
-// }
+export const startSingleScreenApp = () =>{
+Navigation.startSingleScreenApp({
+  screen:{
+  screen:"mock.Login",
+  title:"login"
+}
+})
+}
 
 
-const startApp = () => {
+const startTabApp = () => {
   Promise.all([
       Icon.getImageSource("md-map",30),
       Icon.getImageSource("ios-share-alt",30)
@@ -40,7 +44,7 @@ const startApp = () => {
   tabs: [
     {
       label: 'One', // tab label as appears under the icon in iOS (optional)
-      screen: 'mock.Home', // unique ID registered with Navigation.registerScreen
+      screen: 'mock.List', // unique ID registered with Navigation.registerScreen
       title: 'Screen One',
       icon:icons[0],// title of the screen as appears in the nav bar (optional)
       navigatorStyle: {}, // override the navigator style for the tab screen, see "Styling the navigator" below (optional),
@@ -48,13 +52,13 @@ const startApp = () => {
     },
     {
       label: 'Two',
-      screen: 'mock.storage',
+      screen: 'mock.Home',
       icon:icons[0],
       title: 'Screen Two'
     },
     {
       label: 'Three',
-      screen :'mock.Tab2',
+      screen :'mock.ListDetails',
       icon:icons[1],
       title:'Screen Three'
     }
@@ -102,4 +106,4 @@ const startApp = () => {
  
 
 
-export default startApp
+export default startTabApp

@@ -1,16 +1,22 @@
-import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from '../actions/actionTypes.js'
+import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE, CREATE_LIST } from '../actions/actionTypes.js'
 	
 
 
 	const initialState = {
-		places:['chennai'],
+		places:[],
 		selectedPlace:null
 	}
 
 	const reducer = (state = initialState , action) =>{
 		switch (action.type) {
+			case CREATE_LIST :
+			return {
+				...state,
+				places:action.listItems,
+				selectedPlace:null
+			}
+			break;
 			case ADD_PLACE :
-			console.log(action)
 			return {
 				...state,
 				places:state.places.concat({
@@ -21,23 +27,26 @@ import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE } from '../action
 					}
 				})
 			}
+			break;
 			case DELETE_PLACE : 
 			return {
 				...state,
 				places : state.places.filter( item => item.key != state.selectedPlace.key ),
 				selectedPlace : null
 			}
+			break;
 			case SELECT_PLACE :
 			return {
 				...state,
-				selectedPlace : state.places.find( item => item.key === action.placeKey)
+				selectedPlace : action.placeKey
 			}
-
+			break;
 			case DESELECT_PLACE :
 			return {
 				...state,
 				selectedPlace:null
 			}
+			break;
 			default:
 				return state;
 		}

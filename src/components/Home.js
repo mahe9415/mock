@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import storeConfig from '../../store/store';
 import { Provider } from 'react-redux';
 import { addPlace } from '../../store/actions/places';
+
+
+import { startSingleScreenApp } from '../../App.js'
 // import Icon from 'react-native-vector-icons/Ionicons';
 // const addPlace = ()=>{
 //   console.log("r")
@@ -23,9 +26,12 @@ class Home extends React.Component{
 
   componentDidMount(){
     // this.setState({icon:)};
-    this.props.logTheAction('Palani');
+    // this.props.logTheAction('Palani');
     BackHandler.addEventListener('hardwareBackPress', function() {
-    this.goBack()
+    this.props.navigator.pop({
+    animated: true, // does the pop have transition animation or does it happen immediately (optional)
+    animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
+  });
     return true
   })
   }
@@ -34,17 +40,19 @@ class Home extends React.Component{
 
 
   onPressLearnMore(){
-    Promise.all([
-      Icon.getImageSource("md-map",30),
-       Icon.getImageSource("md-map",30)
-      ]).then(icon => {
-            this.props.navigator.push({
-                  screen:"mock.Tab2",
-                  title:"From method",
-                  icon:icon[0],
-                   passProps: {store,Provider},
-    })
-      })
+    startSingleScreenApp()
+
+    // Promise.all([
+    //   Icon.getImageSource("md-map",30),
+    //    Icon.getImageSource("md-map",30)
+    //   ]).then(icon => {
+    //         this.props.navigator.push({
+    //               screen:"mock.Tab2",
+    //               title:"From method",
+    //               icon:icon[0],
+    //                passProps: {store,Provider},
+    // })
+    //   })
   }
 
   render() {
