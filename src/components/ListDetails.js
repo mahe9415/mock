@@ -13,12 +13,15 @@ import { deselect } from '../../store/actions/places';
 class ListDetails extends React.Component{
 	constructor(props){
 		super(props)
+		// console.log(this.props)
 	}
 
-
+	componentWillUnmount() {
+	  	this.props.deselect()
+   		}
 	render(){
-		console.log(this.props)
-		if(!this.props.selectedPlace){
+		// console.log(this.props)
+		if(!this.props.selectedPlace&& this.props.selectedPlace!==0){
 			return (
 				<Text> Loading </Text>
 				)
@@ -53,4 +56,5 @@ const mapPropsToDispatch = dispatch => {
 		deselect : () => dispatch(deselect())
 	}
 }
+
 export default connect(mapPropsToState,mapPropsToDispatch)(ListDetails)

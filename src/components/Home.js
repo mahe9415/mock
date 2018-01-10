@@ -22,16 +22,22 @@ class Home extends React.Component{
   constructor(props){
     super(props);
     this.onPressLearnMore = this.onPressLearnMore.bind(this);
+    this.state ={
+      listScreenId:null
+    }
   }
 
   componentDidMount(){
+    let navigator = this.props.navigator
     // this.setState({icon:)};
     // this.props.logTheAction('Palani');
-    BackHandler.addEventListener('hardwareBackPress', function() {
-    this.props.navigator.pop({
+    BackHandler.addEventListener('hardwareBackPress', function(navigator) {
+      console.log(navigator)
+    navigator.pop({
     animated: true, // does the pop have transition animation or does it happen immediately (optional)
     animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
-  });
+    });
+    console.log(this.props.navigator || 'no no')
     return true
   })
   }

@@ -6,29 +6,42 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import storeConfig from '../../store/store';
 import { Provider } from 'react-redux';
-import { selectPlaceAndNavigate } from '../../store/actions/places';
+import { selectPlaceAndNavigate, getList } from '../../store/actions/places';
 
 
 class ListItems extends React.Component{
 	constructor(props){
-		super(props)
+		super(props);
 		this.generateList = this.generateList.bind(this);
 		this.selectPlaceAndNavigate = this.selectPlaceAndNavigate.bind(this);
 		// this._keyExtractor=this._keyExtractor.bind(this);
 	}
 
 	componentDidMount(){
-		console.log(this.props)
+	BackHandler.addEventListener('hardwareBackPress', async () => {
+		console.log(this.state)
+		if(this.state.listScreenId === await Navigation.getCurrentlyVisibleScreenId()){
+			return false;
+		}
+    this.props.navigator.pop({
+    animated: true, // does the pop have transition animation or does it happen immediately (optional)
+    animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
+    });
+    // console.log(this.props.navigator || 'no no')
+    return true
+  })
+		if(!this.props.ListItems.length){
+			// debugger;
+			this.props.getList()
+		}
 	}
-
-
 	
 selectPlaceAndNavigate(key,item){
-	this.props.navigator.push({
+this.props.navigator.push({
   screen: 'mock.ListDetails', // unique ID registered with Navigation.registerScreen
   title: item.name, // navigation bar title of the pushed screen (optional)
   // titleImage: require('../../img/my_image.png'), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
-  // passProps: {}, // Object that will be passed as props to the pushed screen (optional)
+  passProps: {navigator:this.props.navigator}, // Object that will be passed as props to the pushed screen (optional)
   animated: true, // does the push have transition animation or does it happen immediately (optional)
   animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
   backButtonTitle: "Back", // override the back button title (optional)
@@ -44,7 +57,7 @@ selectPlaceAndNavigate(key,item){
     title: '', // action title (required)
     style: undefined, // 'selected' or 'destructive' (optional)
     actions: [], // list of sub-actions
-  }],
+  }]
 });
 
 			this.props.selectPlaceAndNavigate(key,item)
@@ -67,17 +80,23 @@ selectPlaceAndNavigate(key,item){
 
 
 	render(){
+		if(!this.props.ListItems.length){
+			return(
+				<View>
+				<Text>Loading</Text>
+			</View>)
+		}
 		return(
 			<View style={styles.container}>
 			<ScrollView>
 			<FlatList data={this.props.ListItems}
-			          // keyExtractor={this._keyExtractor}
+			          keyExtractor={(item, index) => index}
 					  renderItem={item => this.generateList(item)}
 					  />
 			</ScrollView>
 			</View>
 			)
-	}
+}
 }
 
 
@@ -122,6 +141,9 @@ const mapPropsToDispatch = dispatch => {
 	return {
 		selectPlaceAndNavigate : (key,item,nav) => {
 			dispatch(selectPlaceAndNavigate(key,item,nav))
+		},
+		getList : () => {
+			dispatch(getList())
 		}
 	}
 }

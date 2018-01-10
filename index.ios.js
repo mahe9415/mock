@@ -3,9 +3,9 @@
 // import { Provider } from 'react-redux';
 // import App from './App';
 
-import { startSingleScreenApp } from './App';
+import  startTabAPP  from './App';
 // console.log("ghello ")
-startSingleScreenApp()
+startTabAPP()
 // import storeConfig from './store/store';
 
 // let initialState={}

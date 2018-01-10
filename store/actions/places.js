@@ -36,7 +36,7 @@ export const deselect = () => {
 
 
 export const loadPlaces = listArray => {
-	console.log("loading")
+	// console.log("loading")
 	return{
 		type:CREATE_LIST,
 		listItems:listArray
@@ -46,7 +46,6 @@ export const loadPlaces = listArray => {
 
 
 export const Login = (email,password) => dispatch  => {
-
 	axios({url:'http://demo7755415.mockable.io/login?email="mahesh@gmail.com"&password="1234"',method:'post'}).then( data  => {
 		if(data.status){
 			dispatch(getList())	
@@ -67,15 +66,13 @@ export const getList = () => dispatch => {
 	}).then(res =>{
 		res.data=Array.from(res.data)
 		dispatch(loadPlaces(res.data))
-			startTabApp()
+			// startTabApp()
 
 	}).catch(err=>console.log(error))
 }
 
 
 export const selectPlaceAndNavigate = (key,item,nav) => dispatch => {
-
-
 	dispatch(selectPlace(key))
 }
 

@@ -28,8 +28,8 @@ Navigation.registerComponent("mock.ListDetails",()=> ListDetails, store, Provide
 export const startSingleScreenApp = () =>{
 Navigation.startSingleScreenApp({
   screen:{
-  screen:"mock.Login",
-  title:"login"
+  screen:"mock.List",
+  title:"List"
 }
 })
 }
@@ -45,16 +45,10 @@ const startTabApp = () => {
     {
       label: 'One', // tab label as appears under the icon in iOS (optional)
       screen: 'mock.List', // unique ID registered with Navigation.registerScreen
-      title: 'Screen One',
+      title: 'List',
       icon:icons[0],// title of the screen as appears in the nav bar (optional)
       navigatorStyle: {}, // override the navigator style for the tab screen, see "Styling the navigator" below (optional),
       navigatorButtons: {} // override the nav buttons for the tab screen, see "Adding buttons to the navigator" below (optional)
-    },
-    {
-      label: 'Two',
-      screen: 'mock.Home',
-      icon:icons[0],
-      title: 'Screen Two'
     },
     {
       label: 'Three',

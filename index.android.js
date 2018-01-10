@@ -19,9 +19,9 @@
 // import React from 'react';
 // import { AppRegistry } from 'react-native';
 // import { Provider } from 'react-redux';
-import { startSingleScreenApp } from './App';
+import  startTabAPP  from './App';
 // console.log("ghello ")
-startSingleScreenApp()
+startTabAPP()
 // import storeConfig from './store/store';
 
 // let initialState={}
