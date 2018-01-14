@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { Input, Button } from '../UI/common';
 import startTabApp from '../../App'
 import { Login } from '../../store/actions/places';
+import AndroidBackButton from './util/AndroidBackButton';
+
 class LoginM extends React.Component{
 	
 	constructor(props){
@@ -34,6 +36,10 @@ class LoginM extends React.Component{
 		_handleLogin(){
 			this.props.LoginUser(this.state.email,this.state.password)
 		}
+		onHwBack = () => {
+		console.log("Login")
+		return false
+	}
 	
 
 	render(){
@@ -49,6 +55,7 @@ class LoginM extends React.Component{
 			 Login
 			</Button>
 			</View>
+				<AndroidBackButton onPress={this.onHwBack}/>
 		 </View>
 			)
 	}

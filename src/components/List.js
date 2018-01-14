@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, BackHandler, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button, ScrollView, FlatList } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import { connect } from 'react-redux';
 import storeConfig from '../../store/store';
 import { Provider } from 'react-redux';
 import { selectPlaceAndNavigate, getList } from '../../store/actions/places';
+import AndroidBackButton from './util/AndroidBackButton';
 
 
 class ListItems extends React.Component{
@@ -18,18 +18,6 @@ class ListItems extends React.Component{
 	}
 
 	componentDidMount(){
-	BackHandler.addEventListener('hardwareBackPress', async () => {
-		console.log(this.state)
-		if(this.state.listScreenId === await Navigation.getCurrentlyVisibleScreenId()){
-			return false;
-		}
-    this.props.navigator.pop({
-    animated: true, // does the pop have transition animation or does it happen immediately (optional)
-    animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
-    });
-    // console.log(this.props.navigator || 'no no')
-    return true
-  })
 		if(!this.props.ListItems.length){
 			// debugger;
 			this.props.getList()
@@ -78,8 +66,12 @@ this.props.navigator.push({
 		)
 	}
 
-
+	onHwBack = () => {
+		console.log("List")
+		return false
+	}
 	render(){
+
 		if(!this.props.ListItems.length){
 			return(
 				<View>
@@ -94,6 +86,7 @@ this.props.navigator.push({
 					  renderItem={item => this.generateList(item)}
 					  />
 			</ScrollView>
+			<AndroidBackButton onPress={this.onHwBack}/>
 			</View>
 			)
 }

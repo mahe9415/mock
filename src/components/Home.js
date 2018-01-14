@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, BackHandler } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -30,16 +30,16 @@ class Home extends React.Component{
   componentDidMount(){
     let navigator = this.props.navigator
     // this.setState({icon:)};
-    // this.props.logTheAction('Palani');
-    BackHandler.addEventListener('hardwareBackPress', function(navigator) {
-      console.log(navigator)
-    navigator.pop({
-    animated: true, // does the pop have transition animation or does it happen immediately (optional)
-    animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
-    });
-    console.log(this.props.navigator || 'no no')
-    return true
-  })
+  //   // this.props.logTheAction('Palani');
+  //   BackHandler.addEventListener('hardwareBackPress', function(navigator) {
+  //     console.log(navigator)
+  //   navigator.pop({
+  //   animated: true, // does the pop have transition animation or does it happen immediately (optional)
+  //   animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
+  //   });
+  //   console.log(this.props.navigator || 'no no')
+  //   return true
+  // })
   }
 
 
