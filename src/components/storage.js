@@ -17,8 +17,12 @@ class AsyncStorageExample extends Component {
          try {
                   const value = await AsyncStorage.getItem('name')
                   if (value !== null){
+                     console.log(value)
                   // We have data!!
                      this.setState({ 'name': value })
+                     }
+                     else {
+                        console.log("Novalue")
                      }
          } catch (error) {
             console.log(error)

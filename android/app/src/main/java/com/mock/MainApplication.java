@@ -14,6 +14,14 @@ import com.reactnativenavigation.NavigationApplication;
 // Vector Icon package
 import com.oblador.vectoricons.VectorIconsPackage;
 
+
+//Maps
+import com.airbnb.android.react.maps.MapsPackage;
+//Android modal to ask the user to enable gps
+import com.showlocationservicesdialogbox.LocationServicesDialogBoxPackage;
+
+
+
  public class MainApplication extends NavigationApplication {
 
      @Override
@@ -26,7 +34,11 @@ import com.oblador.vectoricons.VectorIconsPackage;
          // Add additional packages you require here
          // No need to add RnnPackage and MainReactPackage
          return Arrays.<ReactPackage>asList(
-                new VectorIconsPackage()
+                new VectorIconsPackage(),
+                new MainReactPackage(),
+                new MapsPackage(),
+                new LocationServicesDialogBoxPackage()
+ 
              // eg. new VectorIconsPackage()
          );
      }

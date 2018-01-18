@@ -7,7 +7,7 @@ import { ADD_PLACE, DELETE_PLACE, SELECT_PLACE, DESELECT_PLACE, CREATE_LIST } fr
 		selectedPlace:null
 	}
 
-	const reducer = (state = initialState , action) =>{
+	const reducer = (state = initialState , action) => {
 		switch (action.type) {
 			case CREATE_LIST :
 			return {

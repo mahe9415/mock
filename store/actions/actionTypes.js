@@ -3,6 +3,9 @@ export const DELETE_PLACE	= "DELETE_PLACE"
 export const SELECT_PLACE	= "SELECT_PLACE"
 export const DESELECT_PLACE	= "DESELECT_PLACE"
 export const CREATE_LIST	= "CREATE_LIST"
+export const SET_CUR_LOC	= "SET_CUR_LOC"
+export const GET_CUR_LOC	= "GET_CUR_LOC"
+
 
 
 

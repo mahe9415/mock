@@ -1,13 +1,21 @@
 import { Navigation } from 'react-native-navigation';
 import { Provider } from 'react-redux';
+import storeConfig from './store/store';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+
 import Home from "./src/components/Home";
 import Tab1 from "./src/components/Tab1";
 import Tab2 from "./src/components/Tab2";
 import Login from "./src/components/Login";
 import List from "./src/components/List";
 import ListDetails from "./src/components/ListDetails";
-import storeConfig from './store/store';
-import Icon from 'react-native-vector-icons/Ionicons';
+import storage from "./src/components/storage";
+import Mapify from "./src/components/Mapify";
+import ChooseMapModal from "./src/components/ChooseMapModal";
+import Geo from "./src/components/Geo";
+import CheckPopup from "./src/components/CheckPopup";
+
 
 let initialState={}
 
@@ -19,23 +27,29 @@ Navigation.registerComponent("mock.Tab1",()=> Tab1, store, Provider);
 Navigation.registerComponent("mock.Tab2",()=> Tab2, store, Provider); 
 Navigation.registerComponent("mock.List",()=> List, store, Provider); 
 Navigation.registerComponent("mock.Login",()=> Login, store, Provider); 
+Navigation.registerComponent("mock.Mapify",()=> Mapify, store, Provider); 
 Navigation.registerComponent("mock.ListDetails",()=> ListDetails, store, Provider); 
+Navigation.registerComponent("mock.storage",()=> storage, store, Provider); 
+Navigation.registerComponent("mock.Geo",()=> Geo, store, Provider); 
+Navigation.registerComponent("mock.CheckPopup",()=> CheckPopup, store, Provider); 
+Navigation.registerComponent("mock.ChooseMapModal",()=> ChooseMapModal, store, Provider); 
 
 
 // Start a App
 
 
-export const startSingleScreenApp = () =>{
+ const startSingleScreenApp = () =>{
 Navigation.startSingleScreenApp({
   screen:{
   screen:"mock.List",
-  title:"List"
+  title:"List",
+  initilal:true
 }
 })
 }
 
 
-const startTabApp = () => {
+export const startTabApp = () => {
   Promise.all([
       Icon.getImageSource("md-map",30),
       Icon.getImageSource("ios-share-alt",30)
@@ -52,7 +66,7 @@ const startTabApp = () => {
     },
     {
       label: 'Three',
-      screen :'mock.ListDetails',
+      screen :'mock.Mapify',
       icon:icons[1],
       title:'Screen Three'
     }
@@ -100,4 +114,4 @@ const startTabApp = () => {
  
 
 
-export default startTabApp
+export default startSingleScreenApp

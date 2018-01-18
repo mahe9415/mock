@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, BackHandler, ScrollView, FlatList, Image } from 'react-native';
+import { StyleSheet, Text, View, AsyncStorage, TouchableOpacity, Button, BackHandler, ScrollView, FlatList, Image } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -25,6 +25,12 @@ class ListDetails extends React.Component{
 		return false
 	}
 
+	logIt = () => {
+		this.props.navigator.push({
+			screen:'mock.Mapify',
+			title:'Maps'
+		})
+	}
 	pushSomeScreen = () => {
 this.props.navigator.push({
   screen: 'mock.Login', // unique ID registered with Navigation.registerScreen
@@ -61,7 +67,7 @@ this.props.navigator.push({
 			<Text>
 				{this.props.ListItems[this.props.selectedPlace].description}
 			</Text>
-			<TouchableOpacity onPress={this.pushSomeScreen}>
+			<TouchableOpacity onPress={this.logIt}>
 			  <Image
           		style={{width: "100%", height: 300}}
           		source={{uri: this.props.ListItems[this.props.selectedPlace].image}}
